@@ -50,15 +50,50 @@ const Search = () => {
             </div>    
 
             <div className="result-area">
+                
+                <div className="profile-image-container">
 
-                <div>{perfil?.avatar_url}</div>
-                <div>{perfil?.blog}</div>
-                <div>{perfil?.company}</div>
-                <div>{perfil?.created_at}</div>
-                <div>{perfil?.followers}</div>
-                <div>{perfil?.following}</div>
-                <div>{perfil?.location}</div>
-                <div>{perfil?.public_repos}</div>
+                    <img src={perfil?.avatar_url} alt={login} className="profile-image" />
+
+                    <Button text="Ver perfil" />
+
+                </div>                     
+
+                <div className="profile-description-container">
+
+                    <div className="statistics-data-container">
+
+                        <h1>Repositórios Públicos: {perfil?.public_repos}</h1>
+                        <h1>Seguidores: {perfil?.followers}</h1>
+                        <h1>Seguindo: {perfil?.following}</h1>
+
+                    </div>
+
+                    <div className="information-container">
+
+                        <div className="information-title">
+                            Informações
+                        </div>
+
+                        <div className="information-field">
+                            Empresa: {perfil?.company}
+                        </div>
+
+                        <div className="information-field">
+                            Website/Blog: {perfil?.blog}
+                        </div>
+
+                        <div className="information-field">
+                            Localidade: {perfil?.location}
+                        </div>
+
+                        <div className="information-field">
+                            Membro desde: {perfil?.created_at}
+                        </div>
+
+                    </div>
+
+                </div>
 
             </div>
 
