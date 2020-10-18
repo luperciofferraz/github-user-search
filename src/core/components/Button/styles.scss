@@ -1,8 +1,25 @@
 .btn-icon {
 
-    height: 70px;
-    width: 380px;
-    border-radius: 10px 0px 0px 10px;
-    text-transform: uppercase;
+    width: 101px;
+    height: 40px;
+    left: 120px;
+    top: 595px;
+    background: #1890FF;
+    border-radius: 4px;
+
+}
+
+.btn-text {
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+    justify-content: center;
 
 }

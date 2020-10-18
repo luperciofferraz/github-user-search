@@ -24,38 +24,45 @@ const Search = () => {
 
     return (
 
-        <>
-        <div>
+        <div className="profile-container">
 
-            <form onSubmit={handleSubmit}>
-                            
-                <input 
-                    value={login}
-                    name="login"
-                    type="text" 
-                    placeholder="login"
-                    onChange={handleOnChange}
-                />
+            <div className="search-area">
 
-                <Button text="Encontrar" />
+                <form onSubmit={handleSubmit}>
 
-            </form>
+                    <div className="form-title">
+                        Encontre um perfil Github                        
+                    </div>
 
-        </div>    
 
-        <div>
+                    <input className="search-box"
+                        value={login}
+                        name="login"
+                        type="text" 
+                        placeholder="login"
+                        onChange={handleOnChange}
+                    />
 
-            <div>{perfil?.avatar_url}</div>
-            <div>{perfil?.blog}</div>
-            <div>{perfil?.company}</div>
-            <div>{perfil?.created_at}</div>
-            <div>{perfil?.followers}</div>
-            <div>{perfil?.following}</div>
-            <div>{perfil?.location}</div>
-            <div>{perfil?.public_repos}</div>
+                    <Button text="Encontrar" />
+
+                </form>
+
+            </div>    
+
+            <div className="result-area">
+
+                <div>{perfil?.avatar_url}</div>
+                <div>{perfil?.blog}</div>
+                <div>{perfil?.company}</div>
+                <div>{perfil?.created_at}</div>
+                <div>{perfil?.followers}</div>
+                <div>{perfil?.following}</div>
+                <div>{perfil?.location}</div>
+                <div>{perfil?.public_repos}</div>
+
+            </div>
 
         </div>
-        </>
 
     );
 

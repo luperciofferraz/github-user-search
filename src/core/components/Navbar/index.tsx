@@ -8,7 +8,7 @@ const Navbar = () => (
 
         <div>
             <Link to="/" className="nav-logo-text">
-                <h4>Bootcamp DevSuperior - Lupércio</h4>
+                Bootcamp DevSuperior
             </Link>
         </div>
         

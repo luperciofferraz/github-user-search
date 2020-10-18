@@ -11,7 +11,7 @@ const Button = ({ text }: Props) => (
 
     <div>
         <button className="btn-icon">
-            <h5>{text}</h5>
+            <div className="btn-text">{text}</div>
         </button>
     </div>
 );
