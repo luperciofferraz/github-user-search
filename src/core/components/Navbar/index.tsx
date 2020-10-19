@@ -6,11 +6,9 @@ const Navbar = () => (
 
     <nav className = "main-nav">
 
-        <div>
-            <Link to="/" className="nav-logo-text">
-                Bootcamp DevSuperior
-            </Link>
-        </div>
+        <Link to="/" className="nav-logo-text">
+            Bootcamp DevSuperior
+        </Link>
         
     </nav>
 

@@ -3,11 +3,17 @@ import { Perfil } from 'core/types/Perfil';
 import { makeRequest } from 'core/utils/request';
 import Button from 'core/components/Button';
 import './styles.scss';
+import {dateConvert} from 'core/utils/date';
+import ImageLoader from './components/Loaders/ImageLoader';
+import InfoLoader from './components/Loaders/InfoLoader'; 
+
+const GITHUB_PROFILE_LINK = 'https://github.com/';
 
 const Search = () => {
     
     const [login, setLogin] = useState("");
     const [perfil, setPerfil] = useState<Perfil>();
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         
@@ -19,8 +25,10 @@ const Search = () => {
         
         event.preventDefault();
 
+        setIsLoading(true);
         makeRequest({ url: login })
-            .then(response => setPerfil(response.data));
+            .then(response => setPerfil(response.data))
+            .finally(() => setIsLoading(false));            
     }
 
     return (
@@ -40,7 +48,7 @@ const Search = () => {
                         value={login}
                         name="login"
                         type="text" 
-                        placeholder="login"
+                        placeholder="Usuário Github"
                         onChange={handleOnChange}
                     />
 
@@ -52,63 +60,77 @@ const Search = () => {
 
             </div>    
 
-            <div className="result-area">
+            {perfil && <div className="result-area">
+
+               {isLoading ? <ImageLoader /> : (
                 
-                <div className="profile-image-container">
+                    perfil && <div className="profile-image-container">
 
-                    <img src={perfil?.avatar_url} alt={login} className="profile-image" />
-                    
-                    <div className="btn-profile">
-                        <Button text="Ver perfil" />
-                    </div>
+                        <img src={perfil?.avatar_url} alt={login} className="profile-image" />
+                        
+                        <div className="btn-profile">
+                            <a href={`${GITHUB_PROFILE_LINK}${login}`}>
+                                <Button text="Ver perfil" />
+                            </a>
+                        </div>
 
-                </div>                     
+                    </div>                     
+
+                )}
 
                 <div className="profile-description-container">
 
-                    <div className="statistics-container">
+                    {isLoading ? <InfoLoader /> : (
+                    
+                        <>
 
-                        <div className="statistics-text-container">
-                            <h1 className="statistics-text">Repositórios Públicos: {perfil?.public_repos}</h1>
+                        <div className="statistics-container">
+
+                            <div className="statistics-text-container">
+                                <h1 className="statistics-text">Repositórios Públicos: {perfil?.public_repos}</h1>
+                            </div>
+
+                            <div className="statistics-text-container">
+                                <h1 className="statistics-text">Seguidores: {perfil?.followers}</h1>
+                            </div>
+
+                            <div className="statistics-text-container">
+                                <h1 className="statistics-text">Seguindo: {perfil?.following}</h1>
+                            </div>    
+
                         </div>
 
-                        <div className="statistics-text-container">
-                            <h1 className="statistics-text">Seguidores: {perfil?.followers}</h1>
+                        <div className="information-container">
+
+                            <div className="information-title">
+                                Informações
+                            </div>
+
+                            <div className="information-field-container">
+                                <h1 className="information-field-text">Empresa: {perfil?.company}</h1>
+                            </div>
+
+                            <div className="information-field-container">
+                                <h1 className="information-field-text">Website/Blog: {perfil?.blog}</h1>
+                            </div>
+
+                            <div className="information-field-container">
+                                <h1 className="information-field-text">Localidade: {perfil?.location}</h1>
+                            </div>
+
+                            <div className="information-field-container">
+                                { perfil?.created_at && <h1 className="information-field-text">Membro desde: {dateConvert(perfil?.created_at)}</h1> }
+                            </div>
+
                         </div>
 
-                        <div className="statistics-text-container">
-                            <h1 className="statistics-text">Seguindo: {perfil?.following}</h1>
-                        </div>    
+                        </>
 
-                    </div>
+                    )}
 
-                    <div className="information-container">
+                </div> 
 
-                        <div className="information-title">
-                            <h1>Informações</h1>
-                        </div>
-
-                        <div className="information-field-container">
-                            <h1 className="information-field-text">Empresa: {perfil?.company}</h1>
-                        </div>
-
-                        <div className="information-field-container">
-                            <h1 className="information-field-text">Website/Blog: {perfil?.blog}</h1>
-                        </div>
-
-                        <div className="information-field-container">
-                            <h1 className="information-field-text">Localidade: {perfil?.location}</h1>
-                        </div>
-
-                        <div className="information-field-container">
-                            <h1 className="information-field-text">Membro desde: {perfil?.created_at}</h1>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
+            </div> }
 
         </>
 

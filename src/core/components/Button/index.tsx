@@ -9,11 +9,10 @@ type Props = {
 
 const Button = ({ text }: Props) => (
 
-    <div>
-        <button className="btn-icon">
-            <div className="btn-text">{text}</div>
-        </button>
-    </div>
+    <button className="btn-icon">
+        <div className="btn-text">{text}</div>
+    </button>
+    
 );
 
 export default Button;
