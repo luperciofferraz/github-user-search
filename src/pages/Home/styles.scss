@@ -1,8 +1,6 @@
 .home-container {
-
     padding-top: 117px;
     padding-left: 120px;
-
 }
 
 .text-title {
@@ -31,11 +29,12 @@
 }
 
 
-.text-email {
+.email {
     font-family: Red Hat Display;
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
     line-height: 36px;
     color: #1890FF;
+    text-decoration: none;
 }

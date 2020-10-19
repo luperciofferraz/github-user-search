@@ -10,6 +10,8 @@ type RequestParams = {
 
 const BASE_URL = 'https://api.github.com/users/';
 
+export const GITHUB_PROFILE_LINK = 'https://github.com/';
+
 export const makeRequest = ( { method = 'GET', url, params }: RequestParams ) => {
 
     return axios({

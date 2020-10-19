@@ -1,4 +1,4 @@
-export type Perfil = {
+export type Profile = {
     avatar_url: string;
     blog: string;
     company: string;
